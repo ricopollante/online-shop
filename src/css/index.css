@@ -1,0 +1,190 @@
+body{
+    margin: 30px;
+}
+.products{
+    text-align: center;
+    background-color: aquamarine ;
+    width: 1200px;
+    height: auto;
+    border: 2px solid #000000;
+}
+
+.products ul{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+}
+
+
+.products ul li{
+    list-style: none;
+    width: auto;
+    height: auto;
+    line-height: 5px;
+    margin: 30px;
+}
+.products ul li img.product{
+    width: 200px;
+    height: 250px;
+    box-shadow: 2px 2px 4px #000000;
+    cursor: pointer;
+}
+.products ul li img:hover{    
+    box-shadow: 4px 4px 4px #000000;
+}
+
+.products header{
+text-align: center;
+font-size: 26px;
+font-weight: 900;
+margin-top: 35px;
+padding-bottom: 10px;
+border-bottom: 2px solid #000000;
+
+}
+.products p.name{
+ font-weight: 900;
+ 
+}
+
+.products p.price{
+    font-weight: 900;
+    color: red;
+   }
+
+
+   /* Main content */
+div.main-content{
+    display: flex;
+   
+}
+
+
+/* SIDEBAR */
+.sidebar {
+    display: flex;
+    justify-content: flex-start;
+
+
+}
+.sidebar p {
+    margin: 20px;
+    cursor: pointer;
+}
+
+
+/* Add PRoduct Form */
+
+
+div.form{
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    background-color: aquamarine;
+    border: 2px solid #000000;
+    box-shadow: 2px 2px 4px #000000;
+
+
+}
+
+div.form form{
+    margin: 10px;
+    text-align: center;
+    
+}
+.exitform{
+    margin-left: 200px;
+    margin-bottom: -30px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.product-add{
+    text-align: center;
+}
+
+.product-add:hover{
+    color: red;
+    cursor: pointer;
+
+}
+
+/* Trash */
+
+img.delete{
+    width: 25px !important;
+    margin-bottom: 220px;
+    margin-left: 10px;
+    cursor: pointer;
+
+}
+
+
+
+/* edit */
+img.edit{
+    width: 25px !important;
+    margin-bottom: 180px;
+    margin-left: -25px;
+    cursor: pointer;
+}
+
+
+
+
+header nav ul li{
+ list-style: none;
+ cursor: pointer;
+}
+
+header nav ul{
+    display: flex;
+    justify-content: space-around;
+    background-color: aquamarine;
+    height: 50px;
+    border: 2px solid #000000;
+
+   
+}
+header nav ul li{
+    padding: 20px;
+    font-weight: 900;
+}
+header nav ul li:hover{
+background-color: azure;
+}
+
+
+/* PAGE NUMBERS */
+.pagenum {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+.pagenum p{
+    padding: 5px;
+    font-weight: 900;
+}
+.pagenum p:hover{
+    background-color: #ffffff;
+}
+
+
+/* UPDATE BUTTON */
+.update{
+cursor: pointer;
+}
+
+
+/* ORDERS */
+.orders{
+    display: flex;
+    flex-direction: column;
+}
+.orders .items{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
