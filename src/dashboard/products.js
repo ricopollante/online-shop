@@ -27,6 +27,31 @@ class RemoveProduct extends React.Component{
     
 }
 
+class RemoveOrder extends React.Component{
+    constructor(){
+        super();
+  
+
+    }
+    
+    setDelete(id){
+       console.log(id);
+       fetch('http://localhost:8000/orders/' + id,
+       {
+        method: 'DELETE',
+        mode: 'cors'
+
+      }
+       )
+    .then(result => result.json())
+     .then((result) => {
+        console.log(result);
+    })
+    }
+    
+}
+
+
 
 class Products extends React.Component{
     constructor(){
@@ -120,7 +145,14 @@ this.updateProduct(page.target.id,6)
 showRemoveButton=(id)=>{
 new RemoveProduct().setDelete(id.target.id)
 this.updateProduct(this.state.currentPage,this.state.currentLimit) 
+this.updateProduct(this.state.currentPage,this.state.currentLimit) //Double call for accurate update
+}
 
+//Remove order function
+removeOrder=(id)=>{
+    new RemoveOrder().setDelete(id.target.id)
+    this.showOrders()
+    this.showOrders()//Double call for accurate update
 }
 
 setAddForm=()=>{
@@ -160,7 +192,11 @@ showOrders=()=>{ //Manage  orders
     
   })
 }
-
+showallProducts=()=>{
+    this.setState({HeaderText: "Products Inventory"})
+    this.updateProduct(1,6)
+    this.setState({Orders: ""})
+}
 
 addToCart=(id)=>{ // save to cart
 console.log(id.target.id) 
@@ -212,12 +248,14 @@ fetch("http://localhost:8000/orders/save/?id=" + id.target.id )
             )
         }
         for (var OrdersIndex = 0; OrdersIndex < this.state.Orders.length; OrdersIndex++){
-            
+
+            //Remove order
             OrderItems.push(
                 <li className="items">
+                    <img src={this.state.Orders[OrdersIndex].product_url}></img>
                     <p>{this.state.Orders[OrdersIndex].product_name}</p>
-                    <p>{this.state.Orders[OrdersIndex].product_price}</p>
-                    <p>{this.state.Orders[OrdersIndex].product_url}</p>
+                    <p>{this.state.Orders[OrdersIndex].product_price}php</p>
+                    <p className="remove" onClick={this.removeOrder} id={this.state.Orders[OrdersIndex]._id}> REMOVE</p>
                 </li>
             )
         }
@@ -229,21 +267,22 @@ fetch("http://localhost:8000/orders/save/?id=" + id.target.id )
             <header>{this.state.HeaderText}</header>
             <div className="sidebar">
             <p onClick={this.setAddForm} >Add Product</p>
-            <p>Category</p>
+            <p onClick={this.showallProducts}>All Products</p>
+            <p>Categories</p>
             <p onClick={this.showOrders}>Orders</p>
             </div>
             {this.state.AddForm}
+            
+            <ul>{productsItems}</ul>
+            <ul className="orders">{OrderItems}</ul>
             <div className="pagenum">
             <h4>Page:</h4>
             {pageItems}
             </div>
-            <ul>
-                {productsItems}
-                
-            </ul>
-            <ul className="orders">{OrderItems}</ul>
+            
             
             </div>
+            
         </div>
 
     )
